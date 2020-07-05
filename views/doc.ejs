@@ -1,0 +1,35 @@
+<%- include("partials/header.ejs")%>
+
+<div style="background-color: rgba(255, 127, 80, 0.76); min-height: 100vh;" class="">
+    <form style="margin: auto;" class="pt-5 col-6 " action="/new" method="POST">
+        <h2>Add</h2>
+        <div class="form-group">
+            <input type="text" name="docker[desc]" class="form-control" aria-describedby="emailHelp"
+                placeholder="Description">
+        </div>
+        <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+    <div class="mt-5"><% for (var i =0; i <data.length;  i++ ) { %>
+        <strong>
+            <div style="border-bottom: rgba(0, 0, 0, 0.315) 3px solid; padding-bottom: 2px; display: flex;  justify-content:space-between; width: 50%;margin: auto; min-width: 500px;"
+                class=" mt-4 pl-3 pr-3">
+                <div style="display: inline;">
+                    <%=data[i].description  %>
+                </div>
+                <div style="display: inline;">
+
+                    <form class="form-inline" style="display: inline" method="POST" action=<%= "/update/"+data[i].id%>>
+                        <input type="text" name="update" class="form-control" aria-describedby="emailHelp"
+                            placeholder="Update">
+                        <button class="btn btn-large btn-success">Update</button>
+                    </form>
+                    <form style="display:inline; " method="POST" action=<%= "/ew/"+data[i].id%>><button
+                            class="btn btn-large btn-danger">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </strong>
+        <% } %>
+    </div>
+</div>
+<%- include("partials/footer.ejs")%>
